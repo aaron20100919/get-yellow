@@ -1,19 +1,80 @@
 # get-yellow
-用python爬取涩图
+[用python爬取涩图](https://github.com/aaron20100919/get-yellow)
 
 ### 首先上效果
 ```
 ...
-293.png is ok
-Error accessing URL: HTTPSConnectionPool(host='pixiv.yuki.sh', port=443): Max retries exceeded with url: /img-original/img/2022/05/07/13/40/23/98170194_p0.png (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002A2AF9472E0>, 'Connection to pixiv.yuki.sh timed out. (connect timeout=None)'))
-296.png is ok
-298.png is ok
-301.png is ok
-303.png is ok
-Error downloading image: 429 Client Error: Too Many Requests for url: https://api.lolicon.app/setu/v2?r18=1&num=20
-306.png is ok
-307.png is ok
-309.png is ok
+
+Error accessing URL: 'data'
+868.png is ok
+869.png is ok
+870.png is ok
+871.png is ok
+872.png is ok
+873.png is ok
+874.png is ok
+875.png is ok
+876.png is ok
+877.png is ok
+878.png is ok
+879.png is ok
+880.png is ok
+881.png is ok
+882.png is ok
+883.png is ok
+884.png is ok
+885.png is ok
+886.png is ok
+887.png is ok
+888.png is ok
+889.png is ok
+890.png is ok
+891.png is ok
+892.png is ok
+893.png is ok
+Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re/img-original/img/2023/06/29/13/55/17/109442914_p0.png
+894.png is ok
+895.png is ok
+896.png is ok
+Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re/img-original/img/2022/08/23/20/13/55/100709529_p0.jpg
+删除0个返回失败的文件
+
+去重前有 897 个文件
+
+
+请稍等正在删除重复文件...
+
+
+去重后剩 894 个文件
+
+
+一共删除了 3 个文件
+
+
+836.png is ok
+841.png is ok
+879.png is ok
+897.png is ok
+898.png is ok
+899.png is ok
+900.png is ok
+Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re/img-original/img/2022/12/13/18/02/13/103575192_p0.jpg
+Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re/img-original/img/2022/06/21/20/03/30/99207335_p1.png
+901.png is ok
+902.png is ok
+903.png is ok
+Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re/img-original/img/2022/11/30/02/36/34/103210968_p0.jpg
+904.png is ok
+905.png is ok
+906.png is ok
+907.png is ok
+908.png is ok
+909.png is ok
+910.png is ok
+911.png is ok
+912.png is ok
+913.png is ok
+914.png is ok
 ```
 
 ### 代码
@@ -53,8 +114,9 @@ def download_image(url, num):
         print('%s is ok' % filename)
     except Exception as e:
         print(f'Error downloading image: {str(e)}')
+        if num % 10 == 0:
+            fix()
         num = 0
-        fix()
 
 
 def filecount():
@@ -126,8 +188,9 @@ if __name__ == "__main__":
                         num += 1
                 except Exception as e:
                     print(f'Error accessing URL: {str(e)}')
+                    if num % 10 == 0:
+                        fix()
                     num = 0
-                    fix()
     except KeyboardInterrupt:
         fix()
         pass
@@ -136,3 +199,4 @@ if __name__ == "__main__":
 
 ### 使用说明
 1. 直接运行 `爬色图.py`
+2. 按下<win + r>cmd<enter>输入`pip install requests`, 再运行试试
