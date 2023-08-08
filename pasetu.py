@@ -10,8 +10,7 @@ warnings.filterwarnings("ignore")
 
 urllib3.disable_warnings()
 
-urls = ['https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://moe.jitsu.top/r18',
-        'https://api.lolicon.app/setu/v2?r18=1&num=10']  # , 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
+urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10', 'https://image.anosu.top/pixiv/direct?r18=1&num=30']  # , 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
 num = 0
 
 
@@ -30,8 +29,9 @@ def download_image(url, num):
         print('%s is ok' % filename)
     except Exception as e:
         print(f'Error downloading image: {str(e)}')
+        if num % 10 == 0:
+            fix()
         num = 0
-        fix()
 
 
 def filecount():
@@ -103,8 +103,9 @@ if __name__ == "__main__":
                         num += 1
                 except Exception as e:
                     print(f'Error accessing URL: {str(e)}')
+                    if num % 10 == 0:
+                        fix()
                     num = 0
-                    fix()
     except KeyboardInterrupt:
         fix()
         pass
