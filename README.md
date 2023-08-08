@@ -74,7 +74,7 @@ except KeyboardInterrupt:
 ```
 
 ```python
-# file: 去重.py
+# file: 处理.py
 import os
 import hashlib
  
@@ -131,4 +131,4 @@ if __name__ == '__main__':
 ### 使用说明
 1. 在 `爬色图.py` 处新建 `setu` 文件夹
 2. 运行 `爬色图.py`
-3. 在 `setu` 文件夹里运行 `去重.py`
+3. 在 `setu` 文件夹里运行 `处理.py`
