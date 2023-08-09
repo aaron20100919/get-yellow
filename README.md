@@ -82,20 +82,25 @@ Error downloading image: 404 Client Error: Not Found for url: https://i.pixiv.re
 ```python
 # file: 爬色图(pasetu.py)
 
-from requests.packages import urllib3
 import re
-import requests
 import warnings
 import json
 import os
 import hashlib
 
+try:
+    import requests
+    from requests.packages import urllib3
+except ModuleNotFoundError:
+    os.system('pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U')
+    import requests
+    from requests.packages import urllib3
+
 warnings.filterwarnings("ignore")
 
 urllib3.disable_warnings()
 
-urls = ['https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://moe.jitsu.top/r18',
-        'https://api.lolicon.app/setu/v2?r18=1&num=10']  # , 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
+urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
 num = 0
 
 
@@ -114,7 +119,7 @@ def download_image(url, num):
         print('%s is ok' % filename)
     except Exception as e:
         print(f'Error downloading image: {str(e)}')
-        if num % 10 == 0:
+        if num % 20 == 0:
             fix()
         num = 0
 
@@ -153,7 +158,7 @@ def fix():
     files = os.listdir(p)
     for f in files:
         try:
-            if open(p + '/' + f, 'rb').read(1) == b'{':
+            if open(p + '/' + f, 'rb').read(1) == b'{' or open(p + '/' + f, 'rb').read(1) == b'<':
                 os.remove(p + '/' + f)
                 cnt += 1
         except:
@@ -188,16 +193,13 @@ if __name__ == "__main__":
                         num += 1
                 except Exception as e:
                     print(f'Error accessing URL: {str(e)}')
-                    if num % 10 == 0:
+                    if num % 20 == 0:
                         fix()
                     num = 0
     except KeyboardInterrupt:
         fix()
         pass
-
 ```
 
 ### 使用说明
 1. 直接运行 `爬色图.py`
-2. 按下<win + r>cmd<enter>输入`pip install requests`, 再运行试试
-3. 可以自行修改图片源, 不涩的见 `setuwang.md`
