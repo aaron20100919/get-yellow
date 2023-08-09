@@ -1,4 +1,10 @@
-$\Huge 好康的随机图$
+# 好康的随机图
+
+![](https://api.dujin.org/pic/yuanshen)
+
+![](https://api.dujin.org/pic)
+
+![](http://img.moehu.org/pic.php?id=acgbs)
 
 ![](https://t.mwm.moe/pc)
 
@@ -65,3 +71,5 @@ $\Huge 好康的随机图$
 ![](https://v2.api-m.com/api/heisi?return=302)
 
 ![](https://api.vvhan.com/api/girl)
+
+![](http://img.moehu.org/pic.php?id=xjj)
