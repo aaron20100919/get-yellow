@@ -1,16 +1,22 @@
-from requests.packages import urllib3
 import re
-import requests
 import warnings
 import json
 import os
 import hashlib
 
+try:
+    import requests
+    from requests.packages import urllib3
+except ModuleNotFoundError:
+    os.system('pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U')
+    import requests
+    from requests.packages import urllib3
+
 warnings.filterwarnings("ignore")
 
 urllib3.disable_warnings()
 
-urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10', 'https://image.anosu.top/pixiv/direct?r18=1&num=30']  # , 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
+urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
 num = 0
 
 
@@ -29,7 +35,7 @@ def download_image(url, num):
         print('%s is ok' % filename)
     except Exception as e:
         print(f'Error downloading image: {str(e)}')
-        if num % 10 == 0:
+        if num % 20 == 0:
             fix()
         num = 0
 
@@ -68,7 +74,7 @@ def fix():
     files = os.listdir(p)
     for f in files:
         try:
-            if open(p + '/' + f, 'rb').read(1) == b'{':
+            if open(p + '/' + f, 'rb').read(1) == b'{' or open(p + '/' + f, 'rb').read(1) == b'<':
                 os.remove(p + '/' + f)
                 cnt += 1
         except:
@@ -103,7 +109,7 @@ if __name__ == "__main__":
                         num += 1
                 except Exception as e:
                     print(f'Error accessing URL: {str(e)}')
-                    if num % 10 == 0:
+                    if num % 20 == 0:
                         fix()
                     num = 0
     except KeyboardInterrupt:
