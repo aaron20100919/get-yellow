@@ -200,3 +200,4 @@ if __name__ == "__main__":
 ### 使用说明
 1. 直接运行 `爬色图.py`
 2. 按下<win + r>cmd<enter>输入`pip install requests`, 再运行试试
+3. 可以自行修改图片源, 不涩的见 `setuwang.md`
