@@ -16,7 +16,8 @@ warnings.filterwarnings("ignore")
 
 urllib3.disable_warnings()
 
-urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
+# urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
+urls = ['https://api.lolicon.app/setu/v2?num=10']
 num = 0
 
 
