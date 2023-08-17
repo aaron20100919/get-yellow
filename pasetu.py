@@ -8,7 +8,7 @@ try:
     import requests
     from requests.packages import urllib3
 except ModuleNotFoundError:
-    os.system('pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U')
+    os.system('pip install requests')
     import requests
     from requests.packages import urllib3
 
@@ -16,8 +16,8 @@ warnings.filterwarnings("ignore")
 
 urllib3.disable_warnings()
 
-# http://www.chinawriter.com.cn/2015/2015-03-17/236975.html
-# urls = ['https://moe.j???itsu.top/r18', 'https://api.lol???icon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixi???v/direct?r18=1&num=30', 'https://sex.n???yan.xyz/api/v2/img?num=10&r18=true']
+# http://www.chinawriter.com.cn/2015/2015-03-17/236975.html # 如果你很坏, 读完这一行链接后, 将下一行删掉#和空格, 下下行删了
+# urls = ['https://moe.jitsu.top/r18', 'https://api.lolicon.app/setu/v2?r18=1&num=10'] # , 'https://image.anosu.top/pixiv/direct?r18=1&num=30', 'https://sex.nyan.xyz/api/v2/img?num=10&r18=true']
 urls = ['https://api.lolicon.app/setu/v2?num=10']
 num = 0
 
